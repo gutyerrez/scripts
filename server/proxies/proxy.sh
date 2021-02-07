@@ -12,6 +12,8 @@ if [ "$#" -eq 1 ]; then
   if [[ $j < 1 ]]; then
     cd ${PROXIES_DIRECTORY}/${SERVER_NAME}
 
+    yes | cp ${OUTPUT_DIRECTORY}/Waterfall.jar ${PROXIES_DIRECTORY}/${SERVER_NAME}
+
     if ! [[ -e "settings.json" ]]; then
       cp ${CLOUD_DIRECTORY}/scripts/server/proxies/settings.json ${PROXIES_DIRECTORY}/${SERVER_NAME}
     else
@@ -23,8 +25,10 @@ if [ "$#" -eq 1 ]; then
     plugins=$(jq .plugins[] settings.json)
 
     for plugin in $plugins; do
-      if [[ -e "${PROJECTS_DIRECTORY}/$plugin" ]]; then
-        yes | cp ${PROJECTS_DIRECTORY}/$plugin ${PROXIES_DIRECTORY}/${SERVER_NAME}
+      plugin=${plugin//\"}
+
+      if [[ -e "${OUTPUT_DIRECTORY}/$plugin" ]]; then
+        yes | cp ${OUTPUT_DIRECTORY}/$plugin ${PROXIES_DIRECTORY}/${SERVER_NAME}/plugins
       else
         echo -e "${COLOR_RED}Não foi possível localizar o plugin $plugin.${COLOR_RESET}"
       fi
