@@ -24,6 +24,8 @@ if [ "$#" -eq 1 ]; then
 
     plugins=$(jq .plugins[] settings.json)
 
+    yes | rm ${OUTPUT_DIRECTORY}/$plugin/*.jar
+
     for plugin in $plugins; do
       plugin=${plugin//\"}
 
