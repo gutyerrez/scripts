@@ -24,7 +24,7 @@ if [ "$#" -eq 1 ]; then
 
     plugins=$(jq .plugins[] settings.json)
 
-    yes | rm ${OUTPUT_DIRECTORY}/$plugin/*.jar
+    find ${PROXIES_DIRECTORY}/${SERVER_NAME}/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
 
     for plugin in $plugins; do
       plugin=${plugin//\"}
