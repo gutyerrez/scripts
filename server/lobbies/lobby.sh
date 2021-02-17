@@ -12,8 +12,10 @@ if [ "$#" -eq 1 ]; then
   if [[ $j < 1 ]]; then
     cd ${MAIN_LOBBIES_DIRECTORY}/${SERVER_NAME}
 
+    yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${MAIN_LOBBIES_DIRECTORY}/${SERVER_NAME}
+
     if ! [[ -e "settings.json" ]]; then
-      cp ${CLOUD_DIRECTORY}/scripts/server/lobbies/settings.json ${PROXIES_DIRECTORY}/${SERVER_NAME}
+      cp ${CLOUD_DIRECTORY}/scripts/server/lobbies/settings.json ${MAIN_LOBBIES_DIRECTORY}/${SERVER_NAME}
     else
       plugins=$(jq .plugins ${CLOUD_DIRECTORY}/scripts/server/lobbies/settings.json)
       
@@ -24,7 +26,7 @@ if [ "$#" -eq 1 ]; then
 
     for plugin in $plugins; do
       if [[ -e "${OUTPUT_DIRECTORY}/$plugin" ]]; then
-        yes | cp ${OUTPUT_DIRECTORY}/$plugin ${PROXIES_DIRECTORY}/${SERVER_NAME}/plugins
+        yes | cp ${OUTPUT_DIRECTORY}/$plugin ${MAIN_LOBBIES_DIRECTORY}/${SERVER_NAME}/plugins
       else
         echo -e "${COLOR_RED}Não foi possível localizar o plugin $plugin.${COLOR_RESET}"
       fi
