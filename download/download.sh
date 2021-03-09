@@ -17,7 +17,7 @@ if [ "$#" -eq 1 ]; then
     if [[ -e "gradlew" ]]; then
       chmod -R 777 gradlew
 
-      ./gradlew shadowJar --stacktrace
+      ./gradlew shadowJar && ./gradlew publishToMavenLocal
     elif [[ -e "pom.xml" ]]; then
       mvn clean install
     fi

@@ -1,0 +1,7 @@
+{
+  "theme": "default",
+  "plugins": [
+    "core-spigot.jar",
+    "login.jar"
+  ]
+}
