@@ -34,12 +34,10 @@ if [ "$#" -eq 1 ]; then
       else
         echo -e "${COLOR_RED}Não foi possível localizar o plugin $plugin.${COLOR_RESET}"
       fi
-
-      echo $plugin
     done
 
-    # echo -e "${COLOR_GREEN}Ligando o lobby em $(pwd)...${COLOR_RESET}"
-    # screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx4G -jar PaperSpigot.jar
+    echo -e "${COLOR_GREEN}Ligando o lobby em $(pwd)...${COLOR_RESET}"
+    screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx4G -jar PaperSpigot.jar
   else
     echo -e "${COLOR_YELLOW}Servidor já está ligado.${COLOR_RESET}"
   fi
