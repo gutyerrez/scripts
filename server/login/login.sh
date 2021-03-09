@@ -15,9 +15,9 @@ if [ "$#" -eq 1 ]; then
     yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${LOGIN_LOBBIES_DIRECTORY}/${SERVER_NAME}
 
     if ! [[ -e "settings.json" ]]; then
-      cp ${CLOUD_DIRECTORY}/scripts/server/lobbies/settings.json ${LOGIN_LOBBIES_DIRECTORY}/${SERVER_NAME}
+      cp ${CLOUD_DIRECTORY}/scripts/server/login/settings.json ${LOGIN_LOBBIES_DIRECTORY}/${SERVER_NAME}
     else
-      plugins=$(jq .plugins ${CLOUD_DIRECTORY}/scripts/server/lobbies/settings.json)
+      plugins=$(jq .plugins ${CLOUD_DIRECTORY}/scripts/server/login/settings.json)
       
       jq ".plugins |= $plugins" settings.json > settings.tmp && mv settings.tmp settings.json
     fi
@@ -34,10 +34,12 @@ if [ "$#" -eq 1 ]; then
       else
         echo -e "${COLOR_RED}Não foi possível localizar o plugin $plugin.${COLOR_RESET}"
       fi
+
+      echo $plugin
     done
 
-    echo -e "${COLOR_GREEN}Ligando o lobby em $(pwd)...${COLOR_RESET}"
-    screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx4G -jar PaperSpigot.jar
+    # echo -e "${COLOR_GREEN}Ligando o lobby em $(pwd)...${COLOR_RESET}"
+    # screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx4G -jar PaperSpigot.jar
   else
     echo -e "${COLOR_YELLOW}Servidor já está ligado.${COLOR_RESET}"
   fi
