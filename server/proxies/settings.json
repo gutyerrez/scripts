@@ -6,6 +6,6 @@
   "plugins": [
     "core-bungee.jar",
     "proxy.jar",
-    "skin-restorer.jar"
+    "skins-restorer.jar"
   ]
 }
