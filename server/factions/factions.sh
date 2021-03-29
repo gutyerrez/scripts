@@ -12,7 +12,7 @@ if [ "$#" -eq 1 ]; then
   if [[ $j < 1 ]]; then
     cd ${FACTIONS_DIRECTORY}/${SERVER_NAME}
 
-    yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${FACTIONS_DIRECTORY}/${SERVER_NAME}
+    # yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${FACTIONS_DIRECTORY}/${SERVER_NAME}
 
     if ! [[ -e "settings.json" ]]; then
       cp ${CLOUD_DIRECTORY}/scripts/server/factions/settings.json ${FACTIONS_DIRECTORY}/${SERVER_NAME}
@@ -37,7 +37,8 @@ if [ "$#" -eq 1 ]; then
     done
 
     echo -e "${COLOR_GREEN}Ligando o factions em $(pwd)...${COLOR_RESET}"
-    screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx8G -jar PaperSpigot.jar
+    # screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx8G -jar PaperSpigot.jar
+    screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx8G -jar paper.jar
   else
     echo -e "${COLOR_YELLOW}Servidor já está ligado.${COLOR_RESET}"
   fi
