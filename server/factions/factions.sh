@@ -12,7 +12,13 @@ if [ "$#" -eq 1 ]; then
   if [[ $j < 1 ]]; then
     cd ${FACTIONS_DIRECTORY}/${SERVER_NAME}
 
-    # yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${FACTIONS_DIRECTORY}/${SERVER_NAME}
+    # Only in test servers
+
+    if [[ $SERVER_NAME === "factions-test" ]]; then
+      yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${FACTIONS_DIRECTORY}/${SERVER_NAME}
+    fi
+
+    # Only in test servers
 
     if ! [[ -e "settings.json" ]]; then
       cp ${CLOUD_DIRECTORY}/scripts/server/factions/settings.json ${FACTIONS_DIRECTORY}/${SERVER_NAME}
@@ -24,7 +30,13 @@ if [ "$#" -eq 1 ]; then
 
     plugins=$(jq .plugins[] settings.json)
 
-    # find ${FACTIONS_DIRECTORY}/${SERVER_NAME}/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
+    # Only in test servers
+
+    if [[ $SERVER_NAME === "factions-test" ]]; then
+      find ${FACTIONS_DIRECTORY}/${SERVER_NAME}/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
+    fi
+
+    # Only in test servers
 
     for plugin in $plugins; do
       plugin=${plugin//\"}
@@ -37,8 +49,17 @@ if [ "$#" -eq 1 ]; then
     done
 
     echo -e "${COLOR_GREEN}Ligando o factions em $(pwd)...${COLOR_RESET}"
-    # screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx8G -jar PaperSpigot.jar
-    screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx8G -jar paper.jar
+    
+    if [[ $SERVER_NAME === "factions-test" ]]; then
+      # Only in test servers
+
+      screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx512M -jar PaperSpigot.jar
+
+      # Only in test servers
+    else
+      screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx8G -jar paper.jar
+    fi
+
   else
     echo -e "${COLOR_YELLOW}Servidor já está ligado.${COLOR_RESET}"
   fi
