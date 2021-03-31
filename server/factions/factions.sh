@@ -14,7 +14,7 @@ if [ "$#" -eq 1 ]; then
 
     # Only in test servers
 
-    if [[ $SERVER_NAME === "factions-test" ]]; then
+    if [[ $SERVER_NAME == "factions-test" ]]; then
       yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${FACTIONS_DIRECTORY}/${SERVER_NAME}
     fi
 
@@ -32,7 +32,7 @@ if [ "$#" -eq 1 ]; then
 
     # Only in test servers
 
-    if [[ $SERVER_NAME === "factions-test" ]]; then
+    if [[ $SERVER_NAME == "factions-test" ]]; then
       find ${FACTIONS_DIRECTORY}/${SERVER_NAME}/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
     fi
 
@@ -50,7 +50,7 @@ if [ "$#" -eq 1 ]; then
 
     echo -e "${COLOR_GREEN}Ligando o factions em $(pwd)...${COLOR_RESET}"
     
-    if [[ $SERVER_NAME === "factions-test" ]]; then
+    if [[ $SERVER_NAME == "factions-test" ]]; then
       # Only in test servers
 
       screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx512M -jar PaperSpigot.jar
