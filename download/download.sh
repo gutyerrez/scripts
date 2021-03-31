@@ -7,7 +7,7 @@ source /home/cloud/scripts/main.sh
 if [ "$#" -eq 1 ]; then
   PROJECT_NAME=$1
 
-  if [[ $PROJECT_NAME === "scripts" ]]; then
+  if [[ $PROJECT_NAME == "scripts" ]]; then
     echo -e "${COLOR_GREEN}Iniciando o download do projeto ${PROJECT_NAME}!${COLOR_RESET}"
 
     cd ${CLOUD_DIRECTORY}/scripts
