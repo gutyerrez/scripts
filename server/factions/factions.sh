@@ -20,9 +20,9 @@ if [ "$#" -eq 1 ]; then
       if ! [[ -e "settings.json" ]]; then
         cp ${CLOUD_DIRECTORY}/scripts/server/factions/settings.json ${FACTIONS_DIRECTORY}/${SERVER_NAME}
       else
-        plugins=$(jq .plugins ${CLOUD_DIRECTORY}/scripts/server/factions/settings.json)
+        plugins=$(jq .plugins-test ${CLOUD_DIRECTORY}/scripts/server/factions/settings.json)
         
-        jq ".plugins |= $plugins" settings.json > settings.tmp && mv settings.tmp settings.json
+        jq ".plugins-test |= $plugins" settings.json > settings.tmp && mv settings.tmp settings.json
       fi
 
       plugins=$(jq .plugins-test[] settings.json)
