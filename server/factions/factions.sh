@@ -20,12 +20,12 @@ if [ "$#" -eq 1 ]; then
       if ! [[ -e "settings.json" ]]; then
         cp ${CLOUD_DIRECTORY}/scripts/server/factions/settings.json ${FACTIONS_DIRECTORY}/${SERVER_NAME}
       else
-        plugins=$(jq \".plugins-test\" ${CLOUD_DIRECTORY}/scripts/server/factions/settings.json)
+        plugins=$(jq .plugins-test ${CLOUD_DIRECTORY}/scripts/server/factions/settings.json)
         
-        jq "\".plugins-test\" |= $plugins" settings.json > settings.tmp && mv settings.tmp settings.json
+        jq ".plugins-test |= $plugins" settings.json > settings.tmp && mv settings.tmp settings.json
       fi
 
-      plugins=$(jq \".plugins-test\"[] settings.json)
+      plugins=$(jq .plugins-test[] settings.json)
 
       find ${FACTIONS_DIRECTORY}/${SERVER_NAME}/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
 
@@ -41,7 +41,7 @@ if [ "$#" -eq 1 ]; then
 
       echo -e "${COLOR_GREEN}Ligando o factions em $(pwd)...${COLOR_RESET}"
       
-      screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx512M -jar PaperSpigot.jar
+      # screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx512M -jar PaperSpigot.jar
 
       # Only in test servers
     else
