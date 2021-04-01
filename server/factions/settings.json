@@ -3,6 +3,7 @@
     "core-spigot.jar"
   ],
   "plugins-test": [
-    "core-spigot.jar"
+    "core-spigot.jar",
+    "factions-framework.jar"
   ]
 }
