@@ -25,7 +25,7 @@ if [ "$#" -eq 1 ]; then
         jq ".\"plugins-test\" |= $plugins" settings.json > settings.tmp && mv settings.tmp settings.json
       fi
 
-      plugins=$(jq .\"plugins-test[]\" settings.json)
+      plugins=$(jq .\"plugins-test\"[] settings.json)
 
       find ${FACTIONS_DIRECTORY}/${SERVER_NAME}/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
 
