@@ -41,7 +41,7 @@ if [ "$#" -eq 1 ]; then
 
       echo -e "${COLOR_GREEN}Ligando o factions em $(pwd)...${COLOR_RESET}"
       
-      # screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx512M -jar PaperSpigot.jar
+      screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx512M -jar PaperSpigot.jar
 
       # Only in test servers
     else
