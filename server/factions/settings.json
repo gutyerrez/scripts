@@ -1,6 +1,7 @@
 {
   "plugins": [
-    "core-spigot.jar"
+    "core-spigot.jar",
+    "factions-framework.jar"
   ],
   "plugins-test": [
     "core-spigot.jar",
