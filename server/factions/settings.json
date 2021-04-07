@@ -7,6 +7,7 @@
     "core-spigot.jar",
     "factions-framework.jar",
     "aac.jar",
-    "protocollib.jar"
+    "protocollib.jar",
+    "conditionalcommands.jar"
   ]
 }
