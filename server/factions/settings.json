@@ -5,6 +5,7 @@
   ],
   "plugins-test": [
     "core-spigot.jar",
-    "factions-framework.jar"
+    "factions-framework.jar",
+    "aac.jar"
   ]
 }
