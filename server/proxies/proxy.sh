@@ -36,9 +36,9 @@ if [ "$#" -eq 1 ]; then
       fi
     done
 
-    echo -e "${COLOR_GREEN}Ligando o proxy em $(pwd)...${COLOR_RESET}"
+    echo -e "${COLOR_GREEN}Ligando o ${SERVER_NAME} em $(pwd)...${COLOR_RESET}"
     screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx512M -jar Waterfall.jar
   else
-    echo -e "${COLOR_YELLOW}Servidor já está ligado.${COLOR_RESET}"
+    echo -e "${COLOR_YELLOW}O ${SERVER_NAME} já está ligado.${COLOR_RESET}"
   fi
 fi
