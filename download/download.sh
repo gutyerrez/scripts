@@ -21,7 +21,7 @@ if [ "$#" -eq 1 ]; then
 
       git pull
 
-      goFile=$(ls -1 -- ${PROJECTS_DIRECTORY}/${PROJECT_NAME}/src/*.go | wc -l)
+      goFile=$(ls -1 -- ${PROJECTS_DIRECTORY}/${PROJECT_NAME}/src/*.go | wc -l) > 1
 
       echo -e "$goFile"
 
