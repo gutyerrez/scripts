@@ -27,7 +27,7 @@ if [ "$#" -eq 1 ]; then
         ./gradlew shadowJar && ./gradlew publishToMavenLocal
       elif [[ -e "pom.xml" ]]; then
         mvn clean install
-      elif [[ -e "src\[a-zA-Z].go" ]]; then
+      elif [[ ${GO_FETCH} != "0" ]]; then
         echo -e "Opa"
 
         cd src
