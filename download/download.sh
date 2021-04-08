@@ -28,6 +28,8 @@ if [ "$#" -eq 1 ]; then
       elif [[ -e "pom.xml" ]]; then
         mvn clean install
       elif [[ -e "src\[a-zA-Z].go" ]]; then
+        echo -e "Opa"
+
         cd src
 
         go build && mv src Nyrah && mv Nyrah ${OUTPUT_DIRECTORY}
