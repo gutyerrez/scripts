@@ -21,22 +21,18 @@ if [ "$#" -eq 1 ]; then
 
       git pull
 
-      goFile=$(ls -1 -- ${PROJECTS_DIRECTORY}/${PROJECT_NAME}/src/*.go | wc -l) == 1
-
-      echo -e "$goFile"
-
       if [[ -e "gradlew" ]]; then
         chmod -R 777 gradlew
 
         ./gradlew shadowJar && ./gradlew publishToMavenLocal
       elif [[ -e "pom.xml" ]]; then
         mvn clean install
-      # elif [[  ]]; then
-      #   echo -e "Opa"
+      elif [[ $(ls -1 -- ${PROJECTS_DIRECTORY}/${PROJECT_NAME}/src/*.go | wc -l) == "1" ]]; then
+        echo -e "Opa"
 
-      #   cd src
+        cd src
 
-      #   go build && mv src Nyrah && mv Nyrah ${OUTPUT_DIRECTORY}
+        go build && mv src Nyrah && mv Nyrah ${OUTPUT_DIRECTORY}
       fi
     else
       echo -e "${COLOR_RED}Não foi possível localizar este projeto.${COLOR_RESET}"
