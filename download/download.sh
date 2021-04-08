@@ -27,7 +27,7 @@ if [ "$#" -eq 1 ]; then
         ./gradlew shadowJar && ./gradlew publishToMavenLocal
       elif [[ -e "pom.xml" ]]; then
         mvn clean install
-      elif [[ -e "src\*.go" ]]; then
+      elif [[ -e "src\[a-zA-Z].go" ]]; then
         cd src
 
         go build && mv src Nyrah && mv Nyrah ${OUTPUT_DIRECTORY}
