@@ -27,6 +27,10 @@ if [ "$#" -eq 1 ]; then
         ./gradlew shadowJar && ./gradlew publishToMavenLocal
       elif [[ -e "pom.xml" ]]; then
         mvn clean install
+      elif [[ -e "src\*.go" ]]; then
+        cd src
+
+        go build && mv src Nyrah && mv Nyrah ${OUTPUT_DIRECTORY}
       fi
     else
       echo -e "${COLOR_RED}Não foi possível localizar este projeto.${COLOR_RESET}"
