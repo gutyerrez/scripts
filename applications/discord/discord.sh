@@ -12,7 +12,7 @@ if [[ $j < 1 ]]; then
   yes | cp ${OUTPUT_DIRECTORY}/discord-bot.jar ${APPLICATIONS_DIRECTORY}/discord-bot
 
   echo -e "${COLOR_GREEN}Ligando a aplicação em $(pwd)...${COLOR_RESET}"
-  screen -dmS discord-bot java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx512M -jar discord-bot.jar
+  screen -dmSL discord-bot java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx512M -jar discord-bot.jar
 else
   echo -e "${COLOR_YELLOW}A aplicação já está ligada.${COLOR_RESET}"
 fi
