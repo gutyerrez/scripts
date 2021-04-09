@@ -6,7 +6,6 @@
   "plugins": [
     "core-bungee.jar",
     "proxy.jar",
-    "skins-restorer.jar",
     "nantibot.jar"
   ]
 }
