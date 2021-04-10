@@ -5,7 +5,6 @@
   },
   "plugins": [
     "core-bungee.jar",
-    "proxy.jar",
-    "nantibot.jar"
+    "proxy.jar"
   ]
 }
