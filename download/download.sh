@@ -13,6 +13,18 @@ if [ "$#" -eq 1 ]; then
     cd ${CLOUD_DIRECTORY}/scripts
 
     git pull
+  elif [[ $PROJECT_NAME == "api" ]]; then
+    echo -e "${COLOR_GREEN}Iniciando o download do projeto ${PROJECT_NAME}!${COLOR_RESET}"
+
+    cd ${CLOUD_DIRECTORY}/${PROJECT_NAME}
+
+    git pull
+    
+    if [[ -e "gradlew" ]]; then
+      chmod -R 777 gradlew
+
+      ./gradlew bootJar
+    fi
   else
     if [[ -d "${PROJECTS_DIRECTORY}/${PROJECT_NAME}" ]]; then
       echo -e "${COLOR_GREEN}Iniciando o download do projeto ${PROJECT_NAME}!${COLOR_RESET}"
