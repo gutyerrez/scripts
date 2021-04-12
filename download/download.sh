@@ -16,7 +16,7 @@ if [ "$#" -eq 1 ]; then
   elif [[ $PROJECT_NAME == "api" ]]; then
     echo -e "${COLOR_GREEN}Iniciando o download do projeto ${PROJECT_NAME}!${COLOR_RESET}"
 
-    cd ${CLOUD_DIRECTORY}/${PROJECT_NAME}
+    cd ${PROJECTS_DIRECTORY}/${PROJECT_NAME}
 
     git pull
     
