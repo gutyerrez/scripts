@@ -1,7 +1,10 @@
 {
-  " plugins " : [],
-  " plugins-test " : [
-    " core-spigot.jar " ,
-    " factions-framework.jar "
+  "plugins": [
+    "core-spigot.jar",
+    "factions-framework.jar"
+  ],
+  "plugins-test": [
+    "core-spigot.jar" ,
+    "factions-framework.jar"
   ]
 }
