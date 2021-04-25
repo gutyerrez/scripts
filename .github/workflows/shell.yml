@@ -12,4 +12,4 @@ jobs:
       run: mkdir /home/cloud/scripts/
     - name: Copy all updated files to scripts folder
       working-directory: ${{ github.workspace }}
-      run: cp * /home/cloud/scripts
+      run: cp -r * /home/cloud/scripts
