@@ -12,11 +12,11 @@ if [ "$#" -eq 1 ]; then
   if [[ $j < 1 ]]; then
     cd ${RANKUP_DIRECTORY}/${SERVER_NAME}
 
+    yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${RANKUP_DIRECTORY}/${SERVER_NAME}
+
     if [[ $SERVER_NAME == "rankup-test" ]]; then
       # Only in test servers
 
-      yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${RANKUP_DIRECTORY}/${SERVER_NAME}
-      
       if ! [[ -e "settings.json" ]]; then
         cp ${CLOUD_DIRECTORY}/scripts/server/rankup/settings.json ${RANKUP_DIRECTORY}/${SERVER_NAME}
       else
@@ -67,7 +67,7 @@ if [ "$#" -eq 1 ]; then
 
       echo -e "${COLOR_GREEN}Ligando o ${SERVER_NAME} em $(pwd)...${COLOR_RESET}"
       
-      screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx8G -jar paper.jar
+      screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx6G -jar paper.jar
     fi
   else
     echo -e "${COLOR_YELLOW}O ${SERVER_NAME} já está ligado.${COLOR_RESET}"

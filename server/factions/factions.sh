@@ -12,11 +12,11 @@ if [ "$#" -eq 1 ]; then
   if [[ $j < 1 ]]; then
     cd ${FACTIONS_DIRECTORY}/${SERVER_NAME}
 
+    yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${FACTIONS_DIRECTORY}/${SERVER_NAME}
+
     if [[ $SERVER_NAME == "factions-test" ]]; then
       # Only in test servers
 
-      yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${FACTIONS_DIRECTORY}/${SERVER_NAME}
-      
       if ! [[ -e "settings.json" ]]; then
         cp ${CLOUD_DIRECTORY}/scripts/server/factions/settings.json ${FACTIONS_DIRECTORY}/${SERVER_NAME}
       else
