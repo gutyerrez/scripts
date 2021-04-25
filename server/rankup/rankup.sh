@@ -10,30 +10,30 @@ if [ "$#" -eq 1 ]; then
   j=$(screen -list | grep -P "[0-9]+\.$SERVER_NAME[ \t]+" | wc -l)
 
   if [[ $j < 1 ]]; then
-    cd ${FACTIONS_DIRECTORY}/${SERVER_NAME}
+    cd ${RANKUP_DIRECTORY}/${SERVER_NAME}
 
-    if [[ $SERVER_NAME == "factions-test" ]]; then
+    if [[ $SERVER_NAME == "rankup-test" ]]; then
       # Only in test servers
 
-      yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${FACTIONS_DIRECTORY}/${SERVER_NAME}
+      yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${RANKUP_DIRECTORY}/${SERVER_NAME}
       
       if ! [[ -e "settings.json" ]]; then
-        cp ${CLOUD_DIRECTORY}/scripts/server/factions/settings.json ${FACTIONS_DIRECTORY}/${SERVER_NAME}
+        cp ${CLOUD_DIRECTORY}/scripts/server/rankup/settings.json ${RANKUP_DIRECTORY}/${SERVER_NAME}
       else
-        plugins=$(jq .\"plugins-test\" ${CLOUD_DIRECTORY}/scripts/server/factions/settings.json)
+        plugins=$(jq .\"plugins-test\" ${CLOUD_DIRECTORY}/scripts/server/rankup/settings.json)
         
         jq ".\"plugins-test\" |= $plugins" settings.json > settings.tmp && mv settings.tmp settings.json
       fi
 
       plugins=$(jq .\"plugins-test\"[] settings.json)
 
-      find ${FACTIONS_DIRECTORY}/${SERVER_NAME}/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
+      find ${RANKUP_DIRECTORY}/${SERVER_NAME}/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
 
       for plugin in $plugins; do
         plugin=${plugin//\"}
 
         if [[ -e "${OUTPUT_DIRECTORY}/$plugin" ]]; then
-          yes | cp ${OUTPUT_DIRECTORY}/$plugin ${FACTIONS_DIRECTORY}/${SERVER_NAME}/plugins
+          yes | cp ${OUTPUT_DIRECTORY}/$plugin ${RANKUP_DIRECTORY}/${SERVER_NAME}/plugins
         else
           echo -e "${COLOR_RED}Não foi possível localizar o plugin $plugin.${COLOR_RESET}"
         fi
@@ -46,9 +46,9 @@ if [ "$#" -eq 1 ]; then
       # Only in test servers
     else
       if ! [[ -e "settings.json" ]]; then
-        cp ${CLOUD_DIRECTORY}/scripts/server/factions/settings.json ${FACTIONS_DIRECTORY}/${SERVER_NAME}
+        cp ${CLOUD_DIRECTORY}/scripts/server/rankup/settings.json ${RANKUP_DIRECTORY}/${SERVER_NAME}
       else
-        plugins=$(jq .plugins ${CLOUD_DIRECTORY}/scripts/server/factions/settings.json)
+        plugins=$(jq .plugins ${CLOUD_DIRECTORY}/scripts/server/rankup/settings.json)
         
         jq ".plugins |= $plugins" settings.json > settings.tmp && mv settings.tmp settings.json
       fi
@@ -59,7 +59,7 @@ if [ "$#" -eq 1 ]; then
         plugin=${plugin//\"}
 
         if [[ -e "${OUTPUT_DIRECTORY}/$plugin" ]]; then
-          yes | cp ${OUTPUT_DIRECTORY}/$plugin ${FACTIONS_DIRECTORY}/${SERVER_NAME}/plugins
+          yes | cp ${OUTPUT_DIRECTORY}/$plugin ${RANKUP_DIRECTORY}/${SERVER_NAME}/plugins
         else
           echo -e "${COLOR_RED}Não foi possível localizar o plugin $plugin.${COLOR_RESET}"
         fi
