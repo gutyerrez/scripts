@@ -5,6 +5,7 @@
   },
   "plugins": [
     "core-bungee.jar",
+    "antismasher.jar",
     "proxy.jar"
   ]
 }
