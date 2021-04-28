@@ -67,7 +67,9 @@ if [ "$#" -eq 1 ]; then
 
       echo -e "${COLOR_GREEN}Ligando o ${SERVER_NAME} em $(pwd)...${COLOR_RESET}"
       
-      screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx8G -jar PaperSpigot.jar
+      # Depois trocar o "paper" >> "PaperSpigot"
+      
+      screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx8G -jar paper.jar
     fi
   else
     echo -e "${COLOR_YELLOW}O ${SERVER_NAME} já está ligado.${COLOR_RESET}"
