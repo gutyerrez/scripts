@@ -12,7 +12,7 @@ if [ "$#" -eq 1 ]; then
   if [[ $j < 1 ]]; then
     cd ${RANKUP_DIRECTORY}/${SERVER_NAME}
 
-    yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${RANKUP_DIRECTORY}/${SERVER_NAME}
+    yes | cp ${OUTPUT_DIRECTORY}/pape.jar ${RANKUP_DIRECTORY}/${SERVER_NAME}
 
     if [[ $SERVER_NAME == "rankup-test" ]]; then
       # Only in test servers
