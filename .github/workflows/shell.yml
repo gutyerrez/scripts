@@ -5,11 +5,23 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Delete old scripts folder
-      run: rm -rf /home/cloud/scripts/
-    - name: Create new scripts folder
-      run: mkdir /home/cloud/scripts/
+    - name: Update branch to latest
+      uses: actions/checkout@v2
     - name: Copy all updated files to scripts folder
       working-directory: ${{ github.workspace }}
       run: cp -r * /home/cloud/scripts
+    - name: Removing old script data from remote server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DEDICATED_1_HOST_ADDRESS }}
+        username: ${{ secrets.DEDICATED_USER }}
+        key: ${{ secrets.DEDICATED_SSH_KEY }}
+        script: rm -rf /home/cloud/scripts/
+    - name: Deploy new data to all remote server
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: ${{ github.workspace }}/*
+        remote: /home/cloud/scripts
+        host: ${{ secrets.DEDICATED_1_HOST_ADDRESS }}
+        username: ${{ secrets.DEDICATED_USER }}
+        privateKey: ${{ secrets.DEDICATED_SSH_KEY }}
