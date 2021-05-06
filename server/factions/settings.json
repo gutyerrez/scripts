@@ -2,8 +2,7 @@
   "plugins": [
     "core-spigot.jar",
     "factions-framework.jar",
-    "protocollib.jar",
-    "scutiblockexploits.jar"
+    "protocollib.jar"
   ],
   "plugins-test": [
     "core-spigot.jar" ,
