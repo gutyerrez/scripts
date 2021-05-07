@@ -8,6 +8,6 @@
     "core-spigot.jar" ,
     "factions-framework.jar",
     "worldedit.jar",
-    "edititems-1.0-SNAPSHOT.jar"
+    "edititems.jar"
   ]
 }
