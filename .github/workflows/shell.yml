@@ -7,11 +7,21 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Removing old script data from remote server
-      run: |
-        echo -e "${{ secrets.DEDICATED_SSH_KEY }}" | base64 -w 0 --decode > id_rsa
-        ls -ln
-        cat id_rsa
-        ssh -i id_rsa ${{ secrets.DEDICATED_USER }}@${{ secrets.DEDICATED_1_HOST_ADDRESS }} rm -rf /home/cloud/scripts
+      uses: hyrendev/remote-action@main
+      with:
+        commands: |
+          [
+            "rm -rf /home/cloud/scripts/"
+          ]
+        servers: |
+          [
+            {
+              "host": "${{ secrets.DEDICATED_1_HOST_ADDRESS }}",
+              "port": "${{ secrets.DEDICATED_PORT }}",
+              "user": "${{ secrets.DEDICATED_USER }}",
+              "private_key": "${{ secrets.DEDICATED_SSH_KEY }}"
+            }
+          ]
     - name: Deploy project to remote servers
       uses: hyrendev/scp-action@0.1-ALPHA
       with:
