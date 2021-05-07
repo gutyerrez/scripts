@@ -8,7 +8,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: Removing old script data from remote server
       run: |
+        echo -e "${{ secrets.DEDICATED_SSH_KEY }} | base64 --decode" > id_rsa
         ssh ${{ secrets.DEDICATED_USER }}@${{ secrets.DEDICATED_1_HOST_ADDRESS }} rm -rf /home/cloud/scripts
+        rm -rf id_rsa
     - name: Deploy project to remote servers
       uses: hyrendev/scp-action@0.1-ALPHA
       with:
