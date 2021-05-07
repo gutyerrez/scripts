@@ -4,6 +4,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      SSH_KEY: ${{ echo -e secrets.DEDICATED_SSH_KEY | base64 --decode }}
+
     steps:
     - uses: actions/checkout@v2
     - name: Removing old script data from remote server
@@ -11,7 +14,7 @@ jobs:
       with:
         host: ${{ secrets.DEDICATED_1_HOST_ADDRESS }}
         username: ${{ secrets.DEDICATED_USER }}
-        key: ${{ secrets.DEDICATED_SSH_KEY }}
+        key: ${{ SSH_KEY }}
         script: rm -rf /home/cloud/scripts/
     - name: Deploy project to remote servers
       uses: hyrendev/scp-action@0.1-ALPHA
