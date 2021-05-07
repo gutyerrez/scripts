@@ -11,7 +11,7 @@ jobs:
       with:
         host: ${{ secrets.DEDICATED_1_HOST_ADDRESS }}
         username: ${{ secrets.DEDICATED_USER }}
-        key: ${{ secrets.DEDICATED_SSH_KEY | base64 --decode }}
+        key: ${{ echo -e secrets.DEDICATED_SSH_KEY | base64 --decode }}
         script: rm -rf /home/cloud/scripts/
     - name: Deploy project to remote servers
       uses: hyrendev/scp-action@0.1-ALPHA
