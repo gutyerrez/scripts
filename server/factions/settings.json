@@ -2,6 +2,7 @@
   "plugins": [
     "core-spigot.jar",
     "factions-framework.jar",
+    "edititems.jar",
     "protocollib.jar"
   ],
   "plugins-test": [
