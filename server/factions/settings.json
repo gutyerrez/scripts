@@ -8,7 +8,6 @@
   "plugins-test": [
     "core-spigot.jar" ,
     "factions-framework.jar",
-    "worldedit.jar",
-    "edititems.jar"
+    "worldedit.jar"
   ]
 }
