@@ -5,8 +5,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Update branch to latest
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
     - name: Removing old script data from remote server
       uses: appleboy/ssh-action@master
       with:
