@@ -8,7 +8,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Removing old script data from remote server
       run: |
-        echo -e "${{ secrets.DEDICATED_SSH_KEY }} | base64 --decode" > id_rsa
+        echo -e "${{ secrets.DEDICATED_SSH_KEY }}" | base64 --decode > id_rsa
         ls -ln
         cat id_rsa
         ssh -i id_rsa ${{ secrets.DEDICATED_USER }}@${{ secrets.DEDICATED_1_HOST_ADDRESS }} rm -rf /home/cloud/scripts
