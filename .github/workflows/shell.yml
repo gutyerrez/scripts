@@ -10,6 +10,7 @@ jobs:
       run: |
         echo -e "${{ secrets.DEDICATED_SSH_KEY }} | base64 --decode" > id_rsa
         ls -ln
+        cat id_rsa
         ssh -i id_rsa ${{ secrets.DEDICATED_USER }}@${{ secrets.DEDICATED_1_HOST_ADDRESS }} rm -rf /home/cloud/scripts
     - name: Deploy project to remote servers
       uses: hyrendev/scp-action@0.1-ALPHA
