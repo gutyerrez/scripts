@@ -25,7 +25,7 @@ jobs:
     - name: Deploy project to remote servers
       uses: hyrendev/scp-action@0.1-ALPHA
       with:
-        remote: /home/cloud/output/
+        remote: /home/cloud/
         files: |
           [
             "*"
