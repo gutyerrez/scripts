@@ -28,7 +28,7 @@ jobs:
         remote: /home/cloud/output/
         files: |
           [
-            "${{ github.workspace }}/"
+            "*"
           ]
         servers: |
           [
