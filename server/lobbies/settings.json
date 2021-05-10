@@ -3,7 +3,6 @@
   "plugins": [
     "core-spigot.jar",
     "lobby.jar",
-    "protocollib.jar",
-    "scutiblockexploits.jar"
+    "protocollib.jar"
   ]
 }
