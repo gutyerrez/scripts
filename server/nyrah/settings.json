@@ -1,5 +1,5 @@
 {
-  "address": {
+  "inet_socket_address": {
     "host": "149.56.242.214",
     "port": 25565
   },
