@@ -1,4 +1,6 @@
 {
-  "plugins": [ ],
+  "plugins": [
+    "core-spigot.jar",
+  ],
   "plugins-test": [ ]
 }
