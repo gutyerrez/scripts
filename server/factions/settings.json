@@ -7,7 +7,7 @@
   ],
   "plugins-test": [
     "core-spigot.jar" ,
-    "factions-framework.jar",
-    "worldedit.jar"
+    "factions-alpha.jar",
+    "factions.jar"
   ]
 }
