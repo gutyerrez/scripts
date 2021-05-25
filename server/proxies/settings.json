@@ -6,6 +6,7 @@
   "plugins": [
     "core-bungee.jar",
     "proxy.jar",
-    "scutibungeeblockexploits.jar"
+    "scutibungeeblockexploits.jar",
+    "nanbitbot.jar"
   ]
 }
