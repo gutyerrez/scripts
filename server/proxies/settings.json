@@ -5,6 +5,7 @@
   },
   "plugins": [
     "core-bungee.jar",
-    "proxy.jar"
+    "proxy.jar",
+    "scutibungeeblockexploits.jar"
   ]
 }
