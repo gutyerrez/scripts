@@ -6,7 +6,9 @@
     "protocollib.jar"
   ],
   "plugins-test": [
-    "core-spigot.jar" ,
+    "core-spigot.jar",
+    "worldedit.jar",
+    "fastasyncworldedit.jar",
     "factions-alpha.jar",
     "factions.jar"
   ]
