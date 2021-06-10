@@ -19,7 +19,7 @@ if [ "$#" -eq 1 ]; then
     else
       plugins=$(jq .plugins $CLOUD_DIRECTORY/scripts/server/proxies/settings.json)
 
-      jq -c .plugins |= $plugins settings.json >settings.tmp && mv settings.tmp settings.json
+      jq -c ".plugins |= $plugins" settings.json >settings.tmp && mv settings.tmp settings.json
     fi
 
     plugins=$(jq .plugins[] settings.json)
