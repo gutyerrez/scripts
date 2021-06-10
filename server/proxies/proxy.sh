@@ -27,7 +27,7 @@ if [ "$#" -eq 1 ]; then
     find $PROXIES_DIRECTORY/$SERVER_NAME/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
 
     for plugin in $plugins; do
-      if [[ -e $OUTPUT_DIRECTORY/$plugin ]]; then
+      if [[ -e "$OUTPUT_DIRECTORY/$plugin" ]]; then
         yes | cp $OUTPUT_DIRECTORY/$plugin $PROXIES_DIRECTORY/$SERVER_NAME/$plugins
       else
         echo -e "${COLOR_RED}Não foi possível localizar o plugin ${plugin}.${COLOR_RESET}"
