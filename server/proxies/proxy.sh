@@ -9,10 +9,10 @@ if [ "$#" -eq 1 ]; then
 
   j=$(screen -list | grep -P "[0-9]+\.$SERVER_NAME[ \t]+" | wc -l)
 
-  if [[ $j < 1 ]]; then
+  if [[ $j -lt 1 ]]; then
     cd ${PROXIES_DIRECTORY}/${SERVER_NAME}
 
-    yes | cp ${OUTPUT_DIRECTORY}/Waterfall.jar ${PROXIES_DIRECTORY}/${SERVER_NAME}
+    yes | cp ${OUTPUT_DIRECTORY}/${PROXY_SERVER_JAR} ${PROXIES_DIRECTORY}/${SERVER_NAME}
 
     if ! [[ -e "settings.json" ]]; then
       cp ${CLOUD_DIRECTORY}/scripts/server/proxies/settings.json ${PROXIES_DIRECTORY}/${SERVER_NAME}
@@ -22,7 +22,7 @@ if [ "$#" -eq 1 ]; then
       jq -c ".plugins |= $plugins" settings.json > settings.tmp && mv settings.tmp settings.json
     fi
 
-    plugins=$(jq .plugins[] settings.json)
+    plugins=$(jq -c .plugins[] settings.json)
 
     find ${PROXIES_DIRECTORY}/${SERVER_NAME}/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
 
