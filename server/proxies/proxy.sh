@@ -19,7 +19,7 @@ if [ "$#" -eq 1 ]; then
     else
       plugins=$(jq .plugins $CLOUD_DIRECTORY/scripts/server/proxies/settings.json)
 
-      jq ".plugins |= $plugins" settings.json >settings.tmp && mv settings.tmp settings.json
+      jq -c .plugins |= $plugins settings.json >settings.tmp && mv settings.tmp settings.json
     fi
 
     plugins=$(jq .plugins[] settings.json)
@@ -27,8 +27,6 @@ if [ "$#" -eq 1 ]; then
     find $PROXIES_DIRECTORY/$SERVER_NAME/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
 
     for plugin in $plugins; do
-      plugin=${plugin//\"/}
-
       if [[ -e $OUTPUT_DIRECTORY/$plugin ]]; then
         yes | cp $OUTPUT_DIRECTORY/$plugin $PROXIES_DIRECTORY/$SERVER_NAME/$plugins
       else
