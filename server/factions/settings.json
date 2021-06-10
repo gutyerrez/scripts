@@ -2,15 +2,7 @@
   "plugins": [
     "core-spigot.jar",
     "factions-framework.jar",
-    "edititems.jar",
-    "protocollib.jar"
+    "scutiblockexploits.jar"
   ],
-  "plugins-test": [
-    "core-spigot.jar",
-    "worldedit.jar",
-    "fastasyncworldedit.jar",
-    "factions-alpha.jar",
-    "mambachestcommands.jar",
-    "factions.jar"
-  ]
+  "plugins-test": []
 }

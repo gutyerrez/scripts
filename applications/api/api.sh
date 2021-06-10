@@ -6,7 +6,7 @@ source /home/cloud/scripts/main.sh
 
 j=$(screen -list | grep -P "[0-9]+\.api[ \t]+" | wc -l)
 
-if [[ $j < 1 ]]; then
+if [[ $j -lt 1 ]]; then
   cd ${APPLICATIONS_DIRECTORY}/api
 
   yes | cp ${OUTPUT_DIRECTORY}/api.jar ${APPLICATIONS_DIRECTORY}/api

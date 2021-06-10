@@ -6,7 +6,7 @@ source /home/cloud/scripts/main.sh
 
 j=$(screen -list | grep -P "[0-9]+\.discord-bot[ \t]+" | wc -l)
 
-if [[ $j < 1 ]]; then
+if [[ $j -lt 1 ]]; then
   cd ${APPLICATIONS_DIRECTORY}/discord-bot
 
   yes | cp ${OUTPUT_DIRECTORY}/discord-bot.jar ${APPLICATIONS_DIRECTORY}/discord-bot

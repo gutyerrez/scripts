@@ -1,36 +1,38 @@
-DIRECTORY_PATH="$(dirname ${0})"
+# shellcheck disable=SC2086
+# shellcheck disable=SC2034
+DIRECTORY_PATH=$(dirname $0)
 
-cd "$(dirname $(readlink -f ${0}))"
+cd $(dirname $(readlink -f $0))
 
 source /home/cloud/scripts/main.sh
 
 if [ "$#" -eq 1 ]; then
   SERVER_NAME=$1
 
-  j=$(screen -list | grep -P "[0-9]+\.$SERVER_NAME[ \t]+" | wc -l)
+  j=$(screen -list | grep -P "[0-9]+\.${SERVER_NAME}[ \t]+" | wc -l)
 
-  if [[ $j < 1 ]]; then
-    cd ${LOGIN_LOBBIES_DIRECTORY}/${SERVER_NAME}
+  if [[ $j -lt 1 ]]; then
+    cd $LOGIN_LOBBIES_DIRECTORY/$SERVER_NAME
 
     yes | cp ${OUTPUT_DIRECTORY}/${MINECRAFT_SERVER_JAR} ${LOGIN_LOBBIES_DIRECTORY}/${SERVER_NAME}
 
     if ! [[ -e "settings.json" ]]; then
-      cp ${CLOUD_DIRECTORY}/scripts/server/login/settings.json ${LOGIN_LOBBIES_DIRECTORY}/${SERVER_NAME}
+      cp $CLOUD_DIRECTORY/scripts/server/login/settings.json $LOGIN_LOBBIES_DIRECTORY/$SERVER_NAME
     else
-      plugins=$(jq .plugins ${CLOUD_DIRECTORY}/scripts/server/login/settings.json)
-      
-      jq ".plugins |= $plugins" settings.json > settings.tmp && mv settings.tmp settings.json
+      plugins=$(jq .plugins $CLOUD_DIRECTORY/scripts/server/login/settings.json)
+
+      jq ".plugins |= $plugins" settings.json >settings.tmp && mv settings.tmp settings.json
     fi
 
     plugins=$(jq .plugins[] settings.json)
 
-    find ${LOGIN_LOBBIES_DIRECTORY}/${SERVER_NAME}/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
+    find $LOGIN_LOBBIES_DIRECTORY/$SERVER_NAME/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
 
     for plugin in $plugins; do
-      plugin=${plugin//\"}
+      plugin=${plugin//\"/}
 
-      if [[ -e "${OUTPUT_DIRECTORY}/$plugin" ]]; then
-        yes | cp ${OUTPUT_DIRECTORY}/$plugin ${LOGIN_LOBBIES_DIRECTORY}/${SERVER_NAME}/plugins
+      if [[ -e $OUTPUT_DIRECTORY/$plugin ]]; then
+        yes | cp $OUTPUT_DIRECTORY/$plugin $LOGIN_LOBBIES_DIRECTORY/$SERVER_NAME/plugins
       else
         echo -e "${COLOR_RED}Não foi possível localizar o plugin $plugin.${COLOR_RESET}"
       fi

@@ -9,7 +9,7 @@ if [ "$#" -eq 1 ]; then
 
   j=$(screen -list | grep -P "[0-9]+\.$SERVER_NAME[ \t]+" | wc -l)
 
-  if [[ $j < 1 ]]; then
+  if [[ $j -lt 1 ]]; then
     cd ${RANKUP_DIRECTORY}/${SERVER_NAME}
 
     yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${RANKUP_DIRECTORY}/${SERVER_NAME}
