@@ -1,12 +1,8 @@
 {
   "plugins": [
+    "core-spigot.jar",
+    "factions-framework.jar",
     "scutiblockexploits.jar"
   ],
-  "plugins-test": [
-    "core-spigot.jar",
-    "worldedit.jar",
-    "fastasyncworldedit.jar",
-    "factions-alpha.jar",
-    "factions.jar"
-  ]
+  "plugins-test": []
 }
