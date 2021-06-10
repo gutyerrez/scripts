@@ -12,7 +12,7 @@ if [ "$#" -eq 1 ]; then
   if [[ $j < 1 ]]; then
     cd ${LOGIN_LOBBIES_DIRECTORY}/${SERVER_NAME}
 
-    yes | cp ${OUTPUT_DIRECTORY}/PaperSpigot.jar ${LOGIN_LOBBIES_DIRECTORY}/${SERVER_NAME}
+    yes | cp ${OUTPUT_DIRECTORY}/${MINECRAFT_SERVER_JAR} ${LOGIN_LOBBIES_DIRECTORY}/${SERVER_NAME}
 
     if ! [[ -e "settings.json" ]]; then
       cp ${CLOUD_DIRECTORY}/scripts/server/login/settings.json ${LOGIN_LOBBIES_DIRECTORY}/${SERVER_NAME}
@@ -37,7 +37,7 @@ if [ "$#" -eq 1 ]; then
     done
 
     echo -e "${COLOR_GREEN}Ligando o ${SERVER_NAME} em $(pwd)...${COLOR_RESET}"
-    screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx4G -jar PaperSpigot.jar
+    screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx4G -jar ${MINECRAFT_SERVER_JAR}
   else
     echo -e "${COLOR_YELLOW}O ${SERVER_NAME} já está ligado.${COLOR_RESET}"
   fi
