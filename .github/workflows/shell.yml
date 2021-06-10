@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Removing old script data from remote server
-      uses: hyrendev/remote-action@0.1-ALPHA
+      uses: hyrendev/remote-action@main
       with:
         commands: |
           [
@@ -25,7 +25,7 @@ jobs:
             }
           ]
     - name: Deploy project to remote servers
-      uses: hyrendev/scp-action@0.1-ALPHA
+      uses: hyrendev/scp-action@main
       with:
         remote: /home/cloud/scripts/
         files: |
