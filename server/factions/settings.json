@@ -1,7 +1,5 @@
 {
   "plugins": [
-    "core-spigot.jar",
-    "factions-framework.jar",
     "scutiblockexploits.jar"
   ],
   "plugins-test": []
