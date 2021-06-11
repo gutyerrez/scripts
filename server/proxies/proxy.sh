@@ -17,12 +17,12 @@ if [ "$#" -eq 1 ]; then
     if ! [[ -e "settings.json" ]]; then
       cp ${CLOUD_DIRECTORY}/scripts/server/proxies/settings.json ${PROXIES_DIRECTORY}/${SERVER_NAME}
     else
-      plugins=$(jq -c .plugins ${CLOUD_DIRECTORY}/scripts/server/proxies/settings.json)
+      plugins=$(jq -r .plugins ${CLOUD_DIRECTORY}/scripts/server/proxies/settings.json)
 
-      jq -c ".plugins |= $plugins" settings.json > settings.tmp && mv settings.tmp settings.json
+      jq -r ".plugins |= $plugins" settings.json > settings.tmp && mv settings.tmp settings.json
     fi
 
-    plugins=$(jq -c .plugins[] settings.json)
+    plugins=$(jq -r .plugins[] settings.json)
 
     find ${PROXIES_DIRECTORY}/${SERVER_NAME}/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
 
@@ -35,7 +35,7 @@ if [ "$#" -eq 1 ]; then
     done
 
     echo -e "${COLOR_GREEN}Ligando o ${SERVER_NAME} em $(pwd)...${COLOR_RESET}"
-#    screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx512M -jar ${PROXY_SERVER_JAR}
+    screen -dmS ${SERVER_NAME} java ${MINECRAFT_JAVA_FLAGS} -Xms128M -Xmx512M -jar ${PROXY_SERVER_JAR}
   else
     echo -e "${COLOR_YELLOW}O ${SERVER_NAME} já está ligado.${COLOR_RESET}"
   fi
