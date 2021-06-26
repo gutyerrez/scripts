@@ -6,8 +6,6 @@ source /home/cloud/scripts/main.sh
 
 while read -r HOST; do
   for FILE in $@; do
-    echo -e "File: >>$FILE<<"
-
     if [[ $FILE == "scripts" ]]; then
       scp -o StrictHostKeyChecking=no -r "$GITHUB_WORKSPACE" root@$HOST:/home/cloud/scripts
     else
