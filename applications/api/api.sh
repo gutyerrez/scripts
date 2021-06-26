@@ -1,6 +1,6 @@
-DIRECTORY_PATH="$(dirname ${0})"
+DIRECTORY_PATH=$(dirname ${0})
 
-cd "$(dirname $(readlink -f ${0}))"
+cd $(dirname $(readlink -f ${0}))
 
 source /home/cloud/scripts/main.sh
 
