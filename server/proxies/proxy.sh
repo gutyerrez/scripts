@@ -17,9 +17,9 @@ if [ "$#" -eq 1 ]; then
     if ! [[ -e "settings.json" ]]; then
       cp ${CLOUD_DIRECTORY}/scripts/server/proxies/settings.json ${PROXIES_DIRECTORY}/${SERVER_NAME}
     else
-      plugins=$(jq -r .plugins ${CLOUD_DIRECTORY}/scripts/server/proxies/settings.json)
+      plugins=$(jq .plugins ${CLOUD_DIRECTORY}/scripts/server/proxies/settings.json)
 
-      jq -r ".plugins |= $plugins" settings.json > settings.tmp && mv settings.tmp settings.json
+      jq ".plugins |= $plugins" settings.json > settings.tmp && mv settings.tmp settings.json
     fi
 
     plugins=$(jq -r .plugins[] settings.json)

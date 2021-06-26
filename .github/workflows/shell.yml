@@ -4,40 +4,7 @@ on:
 
 jobs:
   scripts:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v2
-    - name: Removing old script data from remote server
-      uses: hyrendev/remote-action@main
-      with:
-        commands: |
-          [
-            "rm -rf /home/cloud/scripts/*"
-          ]
-        servers: |
-          [
-            {
-              "host": "${{ secrets.DEDICATED_1_HOST_ADDRESS }}",
-              "port": "${{ secrets.DEDICATED_PORT }}",
-              "user": "${{ secrets.DEDICATED_USER }}",
-              "private_key": "${{ secrets.DEDICATED_SSH_KEY }}"
-            }
-          ]
-    - name: Deploy project to remote servers
-      uses: hyrendev/scp-action@main
-      with:
-        remote: /home/cloud/scripts/
-        files: |
-          [
-            "*"
-          ]
-        servers: |
-          [
-            {
-              "host": "${{ secrets.DEDICATED_1_HOST_ADDRESS }}",
-              "port": "${{ secrets.DEDICATED_PORT }}",
-              "user": "${{ secrets.DEDICATED_USER }}",
-              "private_key": "${{ secrets.DEDICATED_SSH_KEY }}"
-            }
-          ]

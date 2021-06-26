@@ -24,13 +24,11 @@ if [ "$#" -eq 1 ]; then
       jq ".plugins |= $plugins" settings.json >settings.tmp && mv settings.tmp settings.json
     fi
 
-    plugins=$(jq .plugins[] settings.json)
+    plugins=$(jq -r .plugins[] settings.json)
 
     find $LOGIN_LOBBIES_DIRECTORY/$SERVER_NAME/plugins/ -maxdepth 1 -type f -name "*.jar" -delete
 
     for plugin in $plugins; do
-      plugin=${plugin//\"/}
-
       if [[ -e $OUTPUT_DIRECTORY/$plugin ]]; then
         yes | cp $OUTPUT_DIRECTORY/$plugin $LOGIN_LOBBIES_DIRECTORY/$SERVER_NAME/plugins
       else
