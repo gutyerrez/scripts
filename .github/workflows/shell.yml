@@ -15,4 +15,4 @@ jobs:
           sh /home/cloud/scripts/services/github/actions/deploy.sh scripts
           rm -rf /home/cloud/scripts
           mkdir /home/cloud/scripts
-          rsync -av --progress $GITHUB_WORKSPACE /home/cloud/scripts --exclude .git/ --exculde .gitignore
+          rsync -av --progress $GITHUB_WORKSPACE /home/cloud/scripts --exclude={'.git/', '.github/', '.gitignore'}
