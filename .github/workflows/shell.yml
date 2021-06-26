@@ -12,7 +12,7 @@ jobs:
         run: sh /home/cloud/scripts/github/actions/remove.sh
       - name: Deploy to remote servers
         run: |
-          sh /home/cloud/scripts/github/actions/deploy.sh *
+          sh /home/cloud/scripts/github/actions/deploy.sh scripts
           rm -rf /home/cloud/scripts
           mkdir /home/cloud/scripts
-          cp * /home/cloud/scripts
+          rsync -av --progress ${{ GITHUB_WORKSPACE }} /home/cloud/scripts --exclude .git/ --exculde .gitignore
