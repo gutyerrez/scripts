@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Remove from remote servers
-        run: sh /home/cloud/scripts/services/github/actions/remove.sh
+        run: sh /home/cloud/scripts/services/github/actions/remove.sh /home/cloud/scripts
       - name: Deploy to remote servers
         run: |
           rm -rf /home/cloud/scripts
