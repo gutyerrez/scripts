@@ -15,9 +15,9 @@ if [ "$#" -eq 1 ]; then
     yes | cp $OUTPUT_DIRECTORY/$MINECRAFT_SERVER_JAR $LOBBIES_DIRECTORY/$SERVER_NAME
 
     if ! [[ -e "settings.json" ]]; then
-      cp $CLOUD_DIRECTORY/scripts/server/lobbies/settings.json $LOBBIES_DIRECTORY/$SERVER_NAME
+      cp $CLOUD_DIRECTORY/scripts/server/lobby/settings.json $LOBBIES_DIRECTORY/$SERVER_NAME
     else
-      plugins=$(jq .plugins $CLOUD_DIRECTORY/scripts/server/lobbies/settings.json)
+      plugins=$(jq .plugins $CLOUD_DIRECTORY/scripts/server/lobby/settings.json)
 
       jq ".plugins |= $plugins" settings.json >settings.tmp && mv settings.tmp settings.json
     fi
