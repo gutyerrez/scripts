@@ -4,7 +4,7 @@ cd $(dirname $(readlink -f ${0}))
 
 source /home/cloud/scripts/main.sh
 
-FILES=($@)
+FILES=("$@")
 
 while read -r HOST; do
   for FILE in "${FILES[@]}"; do
