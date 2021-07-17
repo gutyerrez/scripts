@@ -3,6 +3,7 @@
   "plugins": [
     "core-spigot.jar",
     "lobby.jar",
-    "worldedit.jar"
+    "worldedit.jar",
+    "fawe.jar"
   ]
 }
