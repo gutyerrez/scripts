@@ -1,7 +1,4 @@
 {
   "theme": "default",
-  "plugins": [
-    "worldedit.jar",
-    "fawe.jar"
-  ]
+  "plugins": []
 }
