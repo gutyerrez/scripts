@@ -2,7 +2,6 @@
   "theme": "default",
   "plugins": [
     "core-spigot.jar",
-    "worldedit.jar",
-    "fawe.jar"
+    "lobby.jar"
   ]
 }
