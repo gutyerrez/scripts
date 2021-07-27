@@ -2,7 +2,6 @@
   "theme": "default",
   "plugins": [
     "core-spigot.jar",
-    "lobby.jar",
-    "scuti-block-exploits.jar"
+    "lobby.jar"
   ]
 }
