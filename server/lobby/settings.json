@@ -3,6 +3,6 @@
   "plugins": [
     "scuti-block-exploits.jar",
     "core-spigot.jar",
-    "lobby.jar",
+    "lobby.jar"
   ]
 }
