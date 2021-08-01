@@ -33,6 +33,8 @@ if [ "$#" -eq 1 ]; then
         echo -e "${COLOR_RED}Não foi possível localizar o plugin ${plugin}.${COLOR_RESET}"
       fi
     done
+    
+    rm -rf $LOBBIES_DIRECTORY/$SERVER_NAME/world/
 
     echo -e "${COLOR_GREEN}Ligando o ${SERVER_NAME} em $(pwd)...${COLOR_RESET}"
     screen -dmS $SERVER_NAME java $MINECRAFT_JAVA_FLAGS -Xms128M -Xmx3G -jar $MINECRAFT_SERVER_JAR
